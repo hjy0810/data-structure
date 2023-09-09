@@ -71,6 +71,7 @@ class CircleQueue {
         arr = new int[maxSize];
     }
 
+
     //是否空队列
     public boolean isEmpty() {
         return front == rear;
