@@ -40,7 +40,13 @@ class SingleLinkedList{
     public void add(Node node){
         Node temp=head;
         //1.找到最后一个节点
-        while (temp.next!=null){
+//        while (temp.next!=null){
+//            temp=temp.next;
+//        }
+        while(true){
+            if (temp.next==null) {
+                break;
+            }
             temp=temp.next;
         }
         //2.把node插入到这个节点的后面
@@ -119,6 +125,22 @@ class SingleLinkedList{
             temp=temp.next;
         }
     }
+
+    //单链表中有效结点的个数（不包含头结点）
+    public int getLength(Node node){
+        if (node.next==null){
+            return 0;
+        }
+        int length=0;
+        Node cur=node.next;
+        while (cur!=null){
+            length++;
+            cur=cur.next;
+        }
+        return length;
+    }
+
+
 }
 
 class Node{
