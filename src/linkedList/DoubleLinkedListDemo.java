@@ -104,7 +104,7 @@ class DoubleLinkedList {
         }
         if (flag) {
             temp.pre.next = temp.next;
-            if (temp.next != null) {//如果
+            if (temp.next != null) {//如果是最后一个结点，不需要加改句代码，否则会出现空指针异常
                 temp.next.pre = temp.pre;
             }
         } else {
