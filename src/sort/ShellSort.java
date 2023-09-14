@@ -5,6 +5,8 @@ import java.util.Arrays;
 /**
  * @author 黄建永
  * @version 1.0
+ * 希尔排序(Shell Sort)是插入排序的一种算法，是对直接插入排序的一个优化，也称缩小增量排序。
+ *
  */
 public class ShellSort {
     public static void main(String[] args) {
