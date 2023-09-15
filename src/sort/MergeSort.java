@@ -12,6 +12,14 @@ public class MergeSort {
         System.out.println(Arrays.toString(arr));
     }
 
+    /**
+     * 思想：
+     * 先将数组平均分为左右两个部分，然后对左右两部分数组，递归调用归并排序算法，
+     * 逻辑上可简单理解为，先把左右两个分区排好序，然后再对左右两个有序分区
+     * @param arr
+     * @param left
+     * @param right
+     */
     private static void sort(int[] arr,int left,int right){
         if (left<right){
             int mid=(left+right)/2;
@@ -22,9 +30,9 @@ public class MergeSort {
     }
 
     /**
-     * 思想：
-     * 先将数组平均分为左右两个部分，然后对左右两部分数组，递归调用归并排序算法，
-     * 逻辑上可简单理解为，先把左右两个分区排好序，然后再对左右两个有序分区进行合并操作。
+     * 1。左右分区有序的序列放入到 辅助数组中，直到其中一个分区处理完为止
+     * 2。把另一个分区剩下的数据依次放入到辅助数组中
+     * 3。把辅助数组的数据依次拷贝到原数组中
      * @param arr
      * @param left
      * @param mid  中间索引，也是左递归的最后一个索引
@@ -49,7 +57,7 @@ public class MergeSort {
             tempIndex++;
         }
 
-        //左分区 还有元素，依次添加到辅助数组中
+        //左分区还有元素，依次添加到辅助数组中
         while (posL<=mid) {
             temp[tempIndex]=arr[posL];
             posL++;
