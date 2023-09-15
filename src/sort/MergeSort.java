@@ -7,8 +7,8 @@ import java.util.Arrays;
  */
 public class MergeSort {
     public static void main(String[] args) {
-        int[] arr={2,4,5,1,6,5,8,7};
-        sort(arr,0,arr.length-1);
+        int[] arr = {2, 4, 5, 1, 6, 5, 8, 7};
+        sort(arr, 0, arr.length - 1);
         System.out.println(Arrays.toString(arr));
     }
 
@@ -16,16 +16,17 @@ public class MergeSort {
      * 思想：
      * 先将数组平均分为左右两个部分，然后对左右两部分数组，递归调用归并排序算法，
      * 逻辑上可简单理解为，先把左右两个分区排好序，然后再对左右两个有序分区
+     *
      * @param arr
      * @param left
      * @param right
      */
-    private static void sort(int[] arr,int left,int right){
-        if (left<right){
-            int mid=(left+right)/2;
-            sort(arr,left,mid);//左递归
-            sort(arr,mid+1,right);//右递归
-            merge(arr,left,mid,right);
+    private static void sort(int[] arr, int left, int right) {
+        if (left < right) {
+            int mid = (left + right) / 2;
+            sort(arr, left, mid);//左递归
+            sort(arr, mid + 1, right);//右递归
+            merge(arr, left, mid, right);
         }
     }
 
@@ -33,46 +34,47 @@ public class MergeSort {
      * 1。左右分区有序的序列放入到 辅助数组中，直到其中一个分区处理完为止
      * 2。把另一个分区剩下的数据依次放入到辅助数组中
      * 3。把辅助数组的数据依次拷贝到原数组中
+     *
      * @param arr
      * @param left
-     * @param mid  中间索引，也是左递归的最后一个索引
+     * @param mid   中间索引，也是左递归的最后一个索引
      * @param right
      */
-    private static void merge(int[] arr,int left,int mid,int right){
+    private static void merge(int[] arr, int left, int mid, int right) {
         //定义左右 序列的初始值
-        int posL=left;
-        int posR=mid+1;
+        int posL = left;
+        int posR = mid + 1;
         //定义 辅助数组 及 初始索引
-        int[] temp=new int[arr.length];
-        int tempIndex=0;
+        int[] temp = new int[arr.length];
+        int tempIndex = 0;
         //合并左右有序分区
-        while (posL<=mid && posR<=right){
-            if (arr[posL]<arr[posR]){
-                temp[tempIndex]=arr[posL];
+        while (posL <= mid && posR <= right) {
+            if (arr[posL] < arr[posR]) {
+                temp[tempIndex] = arr[posL];
                 posL++;
-            }else {
-                temp[tempIndex]=arr[posR];
+            } else {
+                temp[tempIndex] = arr[posR];
                 posR++;
             }
             tempIndex++;
         }
 
         //左分区还有元素，依次添加到辅助数组中
-        while (posL<=mid) {
-            temp[tempIndex]=arr[posL];
+        while (posL <= mid) {
+            temp[tempIndex] = arr[posL];
             posL++;
             tempIndex++;
         }
 
-        while (posR<=right){
-            temp[tempIndex]=arr[posR];
+        while (posR <= right) {
+            temp[tempIndex] = arr[posR];
             posR++;
             tempIndex++;
         }
 
         //将合并结果，写入原数组
         for (int i = left; i <= right; i++) {
-            arr[i]=temp[i-left];
+            arr[i] = temp[i - left];
         }
     }
 }
