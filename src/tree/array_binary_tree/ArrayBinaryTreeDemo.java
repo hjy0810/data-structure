@@ -1,6 +1,7 @@
 package tree.array_binary_tree;
 
 /**
+ * 学习于[堆排序（java版本）](https://blog.csdn.net/u011243684/article/details/84895262)
  * 二叉树的顺序存储结构
  * 要求：二叉树是完全二叉树
  * 实现：利用下面完全二叉树的两个特点直接在数组中遍历
