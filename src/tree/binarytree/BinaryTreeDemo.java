@@ -1,5 +1,7 @@
 package tree.binarytree;
 
+import java.util.Stack;
+
 /**
  * 二叉树
  *  遍历与查询
@@ -25,10 +27,10 @@ public class BinaryTreeDemo {
         //赋根结点
         binTree.setRoot(node1);
 
-//        System.out.println("前序遍历结果：");
+        System.out.println("前序遍历结果：");
 //        binTree.preOrder();
 //        System.out.println("中序遍历结果：");
-//        binTree.infixOrder();
+        binTree.infixOrder();
 //        System.out.println("后序遍历结果：");
 //        binTree.postOrder();
 
@@ -39,8 +41,8 @@ public class BinaryTreeDemo {
 //        Node res2 = binTree.infixOrderSearch(6);//找了5次
 //        System.out.println(res2);
 
-        Node res3 = binTree.postOrderSearch(6);//找了4次
-        System.out.println(res3);
+//        Node res3 = binTree.postOrderSearch(6);//找了4次
+//        System.out.println(res3);
 
 
     }
@@ -56,7 +58,10 @@ class BinaryTree {
     //前序遍历
     public void preOrder() {
         if (this.root != null) {
-            this.root.preOrder();
+            //前序遍历递归
+//            this.root.preOrder();
+            //前序遍历非递归
+            this.root.preOrder2();
         } else {
             System.out.println("二叉树为空，无法遍历");
         }
@@ -65,7 +70,10 @@ class BinaryTree {
     //中序遍历
     public void infixOrder() {
         if (this.root != null) {
-            this.root.infixOrder();
+            //中序遍历递归
+//            this.root.infixOrder();
+            //中序遍历非递归
+            this.root.infixOrder2();
         } else {
             System.out.println("二叉树为空，无法遍历");
         }
@@ -74,6 +82,7 @@ class BinaryTree {
     //后序遍历
     public void postOrder() {
         if (this.root != null) {
+            //后序遍历递归
             this.root.postOrder();
         } else {
             System.out.println("二叉树为空，无法遍历");
@@ -99,7 +108,6 @@ class BinaryTree {
             return null;
         }
     }
-
 
     //后序查找
     public Node postOrderSearch(int id) {
@@ -174,6 +182,22 @@ class Node {
         }
     }
 
+    //前序遍历非递归
+    public void preOrder2(){
+        Stack<Node> stack=new Stack<>();
+        stack.push(this);
+        while (!stack.isEmpty()){
+            Node temp=stack.pop();
+            System.out.println(temp);
+            if (temp.right!=null) {
+                stack.push(temp.right);
+            }
+            if (temp.left!=null) {
+                stack.push(temp.left);
+            }
+        }
+    }
+
     //中序遍历
     public void infixOrder() {
         if (this.left != null) {
@@ -182,6 +206,23 @@ class Node {
         System.out.println(this);
         if (this.right != null) {
             this.right.infixOrder();
+        }
+    }
+
+    //中序遍历非递归
+    public void infixOrder2(){
+        Stack<Node> stack=new Stack<>();
+        Node cur=this;
+        while (cur!=null || !stack.isEmpty()){
+            while (cur!=null){
+                stack.push(cur);
+                cur=cur.left;
+            }
+            if (!stack.isEmpty()) {
+                cur=stack.pop();
+                System.out.println(cur);
+                cur=cur.right;
+            }
         }
     }
 
