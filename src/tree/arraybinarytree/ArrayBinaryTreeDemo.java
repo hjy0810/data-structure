@@ -1,4 +1,4 @@
-package tree.array_binary_tree;
+package tree.arraybinarytree;
 
 /**
  * 学习于[堆排序（java版本）](https://blog.csdn.net/u011243684/article/details/84895262)

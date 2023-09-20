@@ -1,4 +1,4 @@
-package linkedList;
+package linkedlist;
 
 /**
  * @author 黄建永

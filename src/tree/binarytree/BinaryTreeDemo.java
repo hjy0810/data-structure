@@ -1,4 +1,4 @@
-package tree.binary_tree;
+package tree.binarytree;
 
 /**
  * 二叉树
